@@ -48,6 +48,7 @@ Then verify `https://api.kearns6988.com/api/health` returns `{"status":"ok",...}
 
 ## Notes
 
+- Deployed from GitHub via the Fly dashboard launch flow (2026-11-13). First deploy built fine but the machine crashed because JWT_SECRET was not set yet; the secret is set in the dashboard and applies on the next deploy.
 - The app listens on port 5000; Fly terminates TLS and forwards to it.
 - `min_machines_running = 1` keeps one machine up so the JSON store is always reachable (the free allowance covers one shared-cpu-1x machine).
 - If the volume is ever lost, `data.json` starts empty — accounts are in that file, so keep a backup of it (`fly ssh sftp` to copy it down) before risky changes.
